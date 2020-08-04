@@ -10,7 +10,17 @@
             scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-0'),
+                messageA: document.querySelector('.main-message.a'),
+                messageB: document.querySelector('.main-message.b'),
+                messageC: document.querySelector('.main-message.c'),
+                messageD: document.querySelector('.main-message.d'),
             },
+            values: {
+                messageA_opactiy:[0, 1],
+                messageB_opacity:[],
+                messageC_opacity:[],
+                messageD_opacity:[]
+            }
         },
         {
             type:'normal',
@@ -19,6 +29,9 @@
             objs: {
                 container: document.querySelector('#scroll-section-1'),
             },
+            values: {
+                backcolor: [1,255],
+            }
         },
         {
             type:'sticky',
@@ -43,8 +56,47 @@
             sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
             sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
         }
+        let totalScrollHeight = 0;
+        for (let i =0; i <sceneInfo.length; i++) {
+            totalScrollHeight += sceneInfo[i].scrollHeight;
+            if(totalScrollHeight >= pageYOffset) {
+                currentScene = i;
+                break;
+            }
+            document.body.setAttribute('id', `show-scene-${currentScene}`);
+        }
+        console.log(currentScene);
+    }
+    function playAnimation() {
+        const objs = sceneInfo[currentScene].objs;
+        const values = sceneInfo[currentScene].values;
+        let currentYOffset = yOffset - prevScrollHeight;
 
-        console.log(sceneInfo);
+        switch(currentScene) {
+            case 0:
+                let messageA_opactiy_in = calcValues(values.messageA_opactiy, currentYOffset);
+                objs.messageA.style.opacity = messageA_opactiy_in ;
+                break;
+            case 1:
+                let backcolor = Math.round(calcValues(values.backcolor, currentYOffset));
+                if (backcolor < 255){
+                objs.container.style.backgroundColor = `rgb(${backcolor},${backcolor},${backcolor})`
+                }
+                console.log(`rgb(${backcolor},${backcolor},${backcolor})`);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+    }
+    function calcValues(values, currentYOffset) {
+        let rv;
+        //섹션에서 스크롤이 얼마나됐는지 비율
+        let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
+        rv = scrollRatio * (values[1] - values[0]) + values[0];
+        return rv;
+
     }
     function scrollLoop() {
         yOffset = window.pageYOffset;
@@ -54,29 +106,19 @@
         }
         if(yOffset > prevScrollHeight+ sceneInfo[currentScene].scrollHeight) {
             currentScene++;
-            // //  section1에서 white로 색 변하게 하기
-            // if(currentScene ===1) {
-            //     console.log('white');
-            //     sceneInfo[currentScene].objs.container.style.backgroundColor='white';
-            // }
-            
         }
         if ( yOffset < prevScrollHeight) {
             if( currentScene === 0) { //모바일에서 바운스 되는 것 떄문에 yoffset이 -되어 currentscene이 -되는 것 방지
                 return;
             }
             currentScene--;
-            // //  section1에서 white로 색 변하게 하기
-            // if(currentScene ===1) {
-            //     sceneInfo[currentScene].objs.container.style.backgroundColor='white'; 
-            // }
         }
-        console.log(currentScene);
         document.body.setAttribute('id', `show-scene-${currentScene}`);
     }
     window.addEventListener('resize',setLayout);
     window.addEventListener('scroll',()=>{
         scrollLoop();
+        playAnimation();
     } )
-    setLayout();
+    window.addEventListener('load',setLayout);
 })();

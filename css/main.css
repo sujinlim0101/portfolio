@@ -76,6 +76,7 @@ a {
     display: block;
 }
 .scroll-section {
+    border: red solid 1px;
 	position: relative;
 	padding-top: 50vh;
 }
@@ -91,7 +92,8 @@ a {
 .main-message {
 	/* display: flex; */
 	/* align-items: center;
-	justify-content: center; */
+    justify-content: center; */
+    opacity:0;
 	top: 35vh;
 	margin: 5px 0;
 	height: 3em;
