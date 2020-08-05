@@ -7,9 +7,17 @@ html {
 
 body {
     overflow-x: hidden;
-    background-color:#161616;
+    background-color: rgb(2,2,2);
     color: white;
+    transition: background-color 3s ease;
     letter-spacing: -0.05em;
+}
+body.white_ani {
+    background-color: #f5f5f7;
+}
+body.white_ani .tarnsition{
+    transition: color 1.5s ease;
+    color:black
 }
 
 a {
@@ -72,22 +80,32 @@ a {
 #show-scene-0 #scroll-section-0 .sticky-elem,
 #show-scene-1 #scroll-section-1 .sticky-elem,
 #show-scene-2 #scroll-section-2 .sticky-elem,
-#show-scene-3 #scroll-section-3 .sticky-elem{
+#show-scene-3 #scroll-section-3 .sticky-elem,
+#show-scene-4 #scroll-section-4 .sticky-elem,
+#show-scene-5 #scroll-section-5 .sticky-elem{
     display: block;
 }
-.scroll-section {
+.scroll-section{
     border: red solid 1px;
-	position: relative;
+    position: relative;
+    padding-top: 50vh;
+
+
+}
+.scroll-section:not(#scroll-section-1,#scroll-section-2,#scroll-section-3){
+    position: relative;
 	padding-top: 50vh;
 }
-#scroll-section-0 h1 {
+#scroll-section-0 .project_title{
+    position: relative;
 	top: -10vh;
 	z-index: 5;
-	font-size: 4rem;
+	font-size: 3rem;
 	text-align: center;
 }
-#scroll-section-0 .portfolio-name {
-    text-align: center;
+#scroll-section-0 .portfolio_name{
+    font-size: 1.5rem;
+
 }
 .main-message {
 	/* display: flex; */
@@ -108,43 +126,70 @@ a {
 	margin-bottom: 0.5em;
 	font-size: 1.2rem;
 }
-.normal-message, .normal-desc {
-    padding: 0 1rem;
+#scroll-section-1 {
+    height: 300;
 }
-.normal-message {
-    margin-bottom: 20rem;
+#scroll-section-2, #scroll-section-3 {
+    padding-top: 0;
 }
-.normal-message h3{
-    margin-bottom: 2rem;
-    text-align: center;
-    font-size: 3rem;
-    color:white;
-    line-height: 1.5;
+#scroll-section-4 .b {
+    top: 10%;
+    left: 40%;
+}
+#scroll-section-4 .c {
+    top: 15%;
+	left: 45%;
+
 }
 
-.normal-desc {
-    text-align: center;
-    max-width: 1000px;
-    color: #e4e2e2;
-    font-size: 1.5rem;
-    line-height: 1.6;
-}
-.desc-message {
-    top:35vh;
-	width: 50%;
+.transition-message h3 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 2.5rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
+} 
+.transition-message p {
+    margin-top: 2rem;
+    line-height: 2.3;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
-
+.transition-message img{
+    border: 1px solid gray;
+    margin: 2.5rem auto;
+    display: block;
+    width: 50%;
+}
+.tarnsition.b h3 {
+    text-align: center;
+}
+.pin {
+	width: 1px;
+	height: 100px;
+	background: rgb(238, 238, 238);
+}
 @media (min-width: 1024px) {
-    .normal-desc {
-        margin: auto;
-        text-align: center;
+    #scroll-section-3 .transition-message{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    .normal-desc.b {
-        max-width: 70%;
+    .transition-message h3 {
+        font-size: 4vw;
+        width:100%
     }
-    .description {
-        margin:0;
-        padding:0;
+    #scroll-section-0 h1 {
+		font-size: 9vw;
+    }
+    #scroll-section-4 .b {
+        top: 20%;
+        left: 50%;
+    }
+    #scroll-section-4 .c {
+        left: 55%;
+    
     }
 }
