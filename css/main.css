@@ -7,27 +7,32 @@ html {
 
 body {
     overflow-x: hidden;
-    background-color: rgb(2,2,2);
-    color: white;
+    background-color: white;
+    color: black;
     transition: background-color 3s ease;
     letter-spacing: -0.05em;
 }
-body.white_ani {
-    background-color: #f5f5f7;
+body.black-ani {
+    background-color: rgb(41 40 40);
+    color:white;
 }
-body.white_ani .tarnsition{
+/* body.black-ani .tarnsition{
     transition: color 1.5s ease;
-    color:black
+    color:white;
+} */
+.container {
+	/* iPhone 가로 스크롤 방지 */
+	overflow-x: hidden;
 }
 
 a {
-    color: white;
+    color: black;
     text-decoration: none;
 }
 .container {
     overflow-x: hidden;
 }
-.global-nav-links, .local-nav-links{
+.nav-links{
     display: flex;
     align-items: center;
     max-width: 1000px;
@@ -35,40 +40,29 @@ a {
     margin:0 auto;
 
 }
-.global-nav-links {
-    justify-content: space-between;
-}
-.global-nav {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	width: 100%;
-	height: 44px;
-	padding: 0 1rem;
-}
-.local-nav {
-	position: absolute;
-	top: 45px;
+
+.nav {
+    position: absolute;
+    top:0;
 	left: 0;
 	z-index: 11;
 	width: 100%;
 	height: 52px;
 	padding: 0 1rem;
 }
-.local-nav-links {
+.nav-links {
     border-bottom: 0.3px solid #dfdfdf63;
 
 }
-.local-nav-links a {
+.nav-links a {
 	font-size: 0.8rem;
 }
-.local-nav-links .project-name {
+.nav-links .project-name {
 	margin-right: auto;
 	font-size: 1.4rem;
     font-weight: bold;
 }
-.local-nav-links a:not(.project-name) {
+.nav-links a:not(.project-name) {
     margin-left: 2em;
 }
 .sticky-elem {
@@ -85,12 +79,14 @@ a {
 #show-scene-5 #scroll-section-5 .sticky-elem{
     display: block;
 }
+.sticky-elem-canvas {
+    top: 0;
+    
+}
 .scroll-section{
     border: red solid 1px;
     position: relative;
     padding-top: 50vh;
-
-
 }
 .scroll-section:not(#scroll-section-1,#scroll-section-2,#scroll-section-3){
     position: relative;
@@ -100,11 +96,13 @@ a {
     position: relative;
 	top: -10vh;
 	z-index: 5;
-	font-size: 3rem;
-	text-align: center;
+	font-size: 4rem;
+    text-align: center;
+    font-weight: bold;
+
 }
 #scroll-section-0 .portfolio_name{
-    font-size: 1.5rem;
+    font-size: 2rem;
 
 }
 .main-message {
@@ -126,22 +124,28 @@ a {
 	margin-bottom: 0.5em;
 	font-size: 1.2rem;
 }
-#scroll-section-1 {
-    height: 300;
+/* .sticky-elem-canvas {
+	top: 0;
+	height: 100%;
+} */
+/* .sticky-elem-canvas canvas {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+} */
+#scroll-section-2 {
+    padding-top: 10vh;
 }
-#scroll-section-2, #scroll-section-3 {
-    padding-top: 0;
+#scroll-section-4 {
+    padding-top: 20vh;
 }
-#scroll-section-4 .b {
-    top: 10%;
-    left: 40%;
-}
-#scroll-section-4 .c {
-    top: 15%;
-	left: 45%;
 
+.transition {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
 }
-
 .transition-message h3 {
     font-family: 'Black Han Sans', sans-serif;
     font-size: 2.5rem;
@@ -149,22 +153,37 @@ a {
     align-items: center;
     justify-content: center;
     font-weight: bold;
+}
+#scroll-section-3 .transition-message h3 {
+    color: #8c440f;
 } 
+#scroll-section-3 .transition-message p {
+    color: #5d5b5b;
+}
 .transition-message p {
+    font-size: 1.2rem;
+    font-weight: bold;
     margin-top: 2rem;
     line-height: 2.3;
     display:flex;
     align-items: center;
     justify-content: center;
 }
-.transition-message img{
-    border: 1px solid gray;
-    margin: 2.5rem auto;
-    display: block;
-    width: 50%;
-}
+
 .tarnsition.b h3 {
     text-align: center;
+}
+.morning-img-container, .work-img-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.work-img-container {
+    margin-top: 10vh;
+}
+.transition img {
+    border:0px;
+    width: 70%
 }
 .pin {
 	width: 1px;
@@ -172,10 +191,13 @@ a {
 	background: rgb(238, 238, 238);
 }
 @media (min-width: 1024px) {
-    #scroll-section-3 .transition-message{
+    /* #scroll-section-3 .transition-message{
         display: flex;
         justify-content: center;
         align-items: center;
+    } */
+    .transition {
+        padding: 10vw 10vw;
     }
     .transition-message h3 {
         font-size: 4vw;
@@ -184,12 +206,5 @@ a {
     #scroll-section-0 h1 {
 		font-size: 9vw;
     }
-    #scroll-section-4 .b {
-        top: 20%;
-        left: 50%;
-    }
-    #scroll-section-4 .c {
-        left: 55%;
-    
-    }
+   
 }
