@@ -4,7 +4,7 @@
     let currentScene = 0; //현재 활성화된 씬
     let enterNewScene = false; //새로운 씬이 시작되는 순간 true
     const sceneInfo =  [
-        {
+        {//0
             type:'sticky',
             heightNum:5,
             scrollHeight:0,
@@ -15,12 +15,13 @@
                 messageC: document.querySelector('.main-message.c'),
                 messageD: document.querySelector('.main-message.d'),
                 canvas: document.querySelector('#video-canvas-0'),
-                // context: document.querySelector('#video-canvas-0').getContext('2d'),
+                context: document.querySelector('#video-canvas-0').getContext('2d'),
                 videoImages : [],
             },
             values: {
                 videoImageCount: 72, 
                 imgaeSequence: [0, 71],
+                canvas_opacity: [1, 0, { start: 0.9, end: 1}],
                 messageA_opacity_in: [0, 1, { start: 0.1, end: 0.2 }],
                 messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
                 messageC_opacity_in: [0, 1, { start: 0.5, end: 0.6 }],
@@ -40,7 +41,8 @@
             }
         },
         {//1
-            type:'normal',
+            type:'sticky',
+            heightNum:1,
             scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-1'),
@@ -50,14 +52,12 @@
         },
         {//2
             type:'normal',
-            scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-2'),
             },
         },
         {//3
             type:'normal',
-            scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-3'),
 
@@ -66,7 +66,6 @@
         
         {//4
             type:'normal',
-            scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-4'),
             }
@@ -83,8 +82,14 @@
                 messageC: document.querySelector('#scroll-section-5 .c'),
                 pinB: document.querySelector('#scroll-section-5 .b .pin'),
                 pinC: document.querySelector('#scroll-section-5 .c .pin'),
+                canvas: document.querySelector('#video-canvas-1'),
+                context: document.querySelector('#video-canvas-1').getContext('2d'),
+                videoImages : []
             },
-            values: {
+            values: {                
+                videoImageCount: 191, 
+                imgaeSequence: [0, 190],
+                canvas_opacity: [1, 0, { start: 0.9, end: 1}],
                 messageA_translateY_in: [20, 0, { start: 0.15, end: 0.2 }],
                 messageB_translateY_in: [30, 0, { start: 0.6, end: 0.65 }],
                 messageC_translateY_in: [30, 0, { start: 0.87, end: 0.92 }],
@@ -114,7 +119,7 @@
     
     function setCanvasImages() {
         let imgElem;
-        for (let i =0; i < sceneInfo[0].values.videoImageCount; i++) {
+        for (let i =1; i < sceneInfo[0].values.videoImageCount+1; i++) {
             imgElem = new Image();
             if (i < 10) {
                 imgElem.src = `./images/001/000${i}.jpg`;
@@ -122,11 +127,21 @@
                 imgElem.src = `./images/001/00${i}.jpg`;
             } else {
                 imgElem.src = `./images/001/0${i}.jpg`;
-
             }
             sceneInfo[0].objs.videoImages.push(imgElem);
         }
-        console.log(sceneInfo[0].objs.videoImages);
+        let imgElem1;
+        for (let i =1; i < sceneInfo[5].values.videoImageCount+1; i++) {
+            imgElem1 = new Image();
+            if (i < 10) {
+                imgElem.src = `./images/002/000${i}.jpg`;
+            } else if (i <100) {
+                imgElem.src = `./images/002/00${i}.jpg`;
+            } else {
+                imgElem.src = `./images/002/0${i}.jpg`;
+            }
+            sceneInfo[5].objs.videoImages.push(imgElem1);
+        }
     }
     function setLayout() {
         for (let i =0; i<sceneInfo.length; i++) {
@@ -136,7 +151,9 @@
                 sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
                 sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
             }
+        
         }
+        console.log(sceneInfo)
         let totalScrollHeight = 0;
         yOffset = window.pageYOffset;
         for (let i = 0; i < sceneInfo.length; i++) {
@@ -147,6 +164,11 @@
             }
         }
         document.body.setAttribute('id',`show-scene-${currentScene}`);
+        const heightRatio = document.documentElement.clientHeight / 1080;
+		console.log(heightRatio);
+        sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
+        sceneInfo[5].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
+
     }
     function playAnimation() {
         const objs = sceneInfo[currentScene].objs;
@@ -154,15 +176,18 @@
         const currentYOffset = yOffset - prevScrollHeight;
         const scrollHeight = sceneInfo[currentScene].scrollHeight;
         const scrollRatio = (yOffset - prevScrollHeight) / sceneInfo[currentScene].scrollHeight;
-        console.log(currentScene);
+        //부드러운 트랜지션을 위한 transition container
+        const transition_conatiner = document.querySelector('#transition-container');
+        
         switch(currentScene) {
             case 0:
+                console.log('section 0 ')
                 //섹션0으로 들어올 때 배경색 화이트 빼기
-                document.body.removeAttribute('class','black_ani');
-
-               // let sequence = Math.round(calcValues(values.imgaeSequence, currentYOffset));
-                // objs.context.drawImage(objs.videoImages[sequence],0,0);
+                transition_conatiner.removeAttribute('class','black-ani')
+                let sequence = Math.round(calcValues(values.imgaeSequence, currentYOffset));
+                objs.context.drawImage(objs.videoImages[sequence],0,0);
                 // console.log('0 play');
+                
                 if (scrollRatio <= 0.22) {
                     // in
                     objs.messageA.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
@@ -203,22 +228,20 @@
                     objs.messageD.style.transform = `translate3d(0, ${calcValues(values.messageD_translateY_out, currentYOffset)}%, 0)`;
                 }
                 break;
-            case 1:
-                document.body.setAttribute('class','black-ani');
-
+            case 1:                
+                transition_conatiner.removeAttribute('class','black-ani')
             case 2:
-                document.body.setAttribute('class','black-ani');
-                if(scrollRatio >=80) {
-                    document.body.removeAttribute('class','black-ani');
-                }
+                transition_conatiner.setAttribute('class','black-ani')
                 break;
             case 3:
-                document.body.removeAttribute('class','black-ani');
+                transition_conatiner.removeAttribute('class','black-ani')
+                transition_conatiner.setAttribute('class','little-yellow')
+
                 break;
             case 4:
-                document.body.removeAttribute('class','black-ani');
                 break;            
             case 5:
+                transition_conatiner.setAttribute('class','little-yellow')
                 if (scrollRatio <= 0.32) {
                     // in
                     objs.messageA.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
@@ -284,6 +307,8 @@
 
     }
     function scrollLoop() {
+        console.log("크기")
+        console.log(document.documentElement.clientHeight, window.innerHeight)
         enterNewScene = false;
         yOffset = window.pageYOffset;
         prevScrollHeight=0; 
@@ -311,5 +336,11 @@
         scrollLoop();
         console.log(currentScene);
     } )
-    window.addEventListener('load',setLayout);
+    window.addEventListener('load', () => {
+        
+        setLayout();
+        sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0],0,0);
+    });
+    setCanvasImages();
+
 })();
