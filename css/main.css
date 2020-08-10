@@ -218,7 +218,7 @@ body {
 .project-img-container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 .introduce-message a {
     display: block;
@@ -226,7 +226,12 @@ body {
     line-height: 3em;
     color:#007cff;
     text-decoration: none;
+    /* z-index:12; */
+    z-index: 50;
+    position: relative
 }
+
+
 @media (min-width: 1024px) {
     .transition {
         padding: 10vw 10vw;

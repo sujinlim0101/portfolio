@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 .nav a {
     color: black;
     text-decoration: none;
@@ -11,7 +13,6 @@
     max-width: 1000px;
     height: 100%;
     margin:0 auto;
-
 }
 .nav {
     position: absolute;
@@ -51,4 +52,12 @@
 	-moz-backdrop-filter: saturate(180%) blur(15px);
 	-o-backdrop-filter: saturate(180%) blur(15px);
 	backdrop-filter: saturate(180%) blur(15px);
+}
+.footer {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff8ee;
 }
