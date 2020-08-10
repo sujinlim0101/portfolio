@@ -254,7 +254,6 @@
             case 5:
                 let sequence2 = Math.round(calcValues(values.imgaeSequence, currentYOffset));
                 objs.context.drawImage(objs.videoImages[sequence2],0,0);
-                console.log(objs.videoImages[sequence2]);
                 transition_conatiner.setAttribute('class','little-yellow')
                 if (scrollRatio <= 0.5) {
                     objs.canvas.style.opacity = calcValues(values.canvas_opacity_in, currentYOffset);
