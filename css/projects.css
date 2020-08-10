@@ -1,0 +1,15 @@
+body {
+    overflow-x: hidden;
+}
+.project-container {
+    position: relative;
+    padding-top: 20vh;    
+    flex-wrap: wrap;
+}
+.project {
+    padding: 1em;;
+    position:relative
+}
+.project img {
+    border: 1px solid #d2d2d2;
+}
