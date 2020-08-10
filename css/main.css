@@ -14,22 +14,17 @@ body {
 #transition-container.black-ani {
     background-color: rgb(41 40 40);
     color:white;
-    transition: background-color 1s linear !important;
-
-
+    transition: background-color 1s ease !important;
 }
 #transition-container.little-yellow {
     background-color: #fffdf9 !important;
     color:black;
-    transition: background-color 1s linear;
+    transition: background-color 1s ease;
 }
-
-
 .container {
 	/* iPhone 가로 스크롤 방지 */
 	overflow-x: hidden;
 }
-
 a {
     color: black;
     text-decoration: none;
@@ -45,7 +40,6 @@ a {
     margin:0 auto;
 
 }
-
 .nav {
     position: absolute;
     top:0;
@@ -53,7 +47,8 @@ a {
 	z-index: 10;
 	width: 100%;
 	height: 52px;
-	padding: 0 1rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid #b1b1b191;
 }
 .nav-links {
     display: flex;
@@ -61,7 +56,6 @@ a {
 	max-width: 1000px;
 	height: 100%;
 	margin: 0 auto;
-    border-bottom: 0.3px solid #dfdfdf63;
 
 }
 .nav-links a {
@@ -74,6 +68,16 @@ a {
 }
 .nav-links a:not(.project-name) {
     margin-left: 2em;
+}
+.nav-sticky .nav {
+	position: fixed;
+	top: 0;
+	background: rgb(222 222 222 / 45%);
+	/* for iPhone */
+	-webkit-backdrop-filter: saturate(180%) blur(15px);
+	-moz-backdrop-filter: saturate(180%) blur(15px);
+	-o-backdrop-filter: saturate(180%) blur(15px);
+	backdrop-filter: saturate(180%) blur(15px);
 }
 .sticky-elem {
     display:none;
@@ -94,11 +98,11 @@ a {
     
 }
 .scroll-section{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     position: relative;
     padding-top: 50vh;
 }
-.scroll-section:not(#scroll-section-1,#scroll-section-2,#scroll-section-3){
+#scroll-section-0 {
     position: relative;
 	padding-top: 50vh;
 }
@@ -120,7 +124,6 @@ a {
 
 }
 .main-message {
-
     top: 30vh;
     left:10vw;
 	margin: 5px 0;
@@ -155,7 +158,6 @@ a {
 #scroll-section-4 {
     padding-top: 20vh;
 } 
-
 .transition {
     display:flex;
     align-items: center;
@@ -189,12 +191,13 @@ a {
 .tarnsition.b h3 {
     text-align: center;
 }
-.morning-img-container, .work-img-container {
+.morning-img-container, .work-img-container, .project-img-container {
     display:flex;
     justify-content: center;
     align-items: center;
 }
 #scroll-section-4 {
+    transition: background-color 1s linear !important;
     background-color: #f9f3e4;
 }
 .work-img-container {
@@ -204,7 +207,6 @@ a {
     border:0px;
     width: 70%
 }
-
 .pin {
 	width: 1px;
 	height: 100px;
@@ -217,14 +219,40 @@ a {
     font-weight: bold;
     opacity: 0;
 }
+#scroll-section-5 .main-message {
+    padding:0;
+    text-align: center;
+    top: 15vh;
+    left: 0;
+    font-size: 3vw;
+}
 #scroll-section-5 .b {
-
 	top: 10%;
 	left: 40%;
 }
 #scroll-section-5 .c {
-	top: 15%;
-	left: 45%;
+	top: 12%;
+	left: 20%;
+}
+#scroll-section-6 {
+    padding:20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fbf8f5;
+}
+#scroll-section-6 h3 {
+    padding-bottom: 10vh;
+    font-size: 3rem;
+}
+
+#scroll-section-6 h3, p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.other-projects {
+    width: 80%;
 }
 @media (min-width: 1024px) {
     /* #scroll-section-3 .transition-message{
@@ -232,6 +260,9 @@ a {
         justify-content: center;
         align-items: center;
     } */
+    .other-projects {
+        width: 60%;
+    }
     .transition {
         padding: 10vw 10vw;
     }
@@ -242,5 +273,12 @@ a {
     #scroll-section-0 h1 {
 		font-size: 9vw;
     }
-   
+    #scroll-section-5 .c {
+        left: 30%;
+    }
+    /* .img-container {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    } */
 }
