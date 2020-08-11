@@ -171,17 +171,18 @@ body {
 #scroll-section-5 .main-message {
     padding:0;
     text-align: center;
-    top: 15vh;
+    top: 25vh;
     left: 0;
     font-size: 2.2rem;
 }
+
 #scroll-section-5 .b {
-	top: 10%;
-	left: 40%;
+	top: 15%;
+	left: 35%;
 }
 #scroll-section-5 .c {
-	top: 12%;
-	left: 20%;
+	top: 18%;
+	left: 17%;
 }
 #scroll-section-6 {
     padding: 13vh 0;
@@ -249,6 +250,12 @@ body {
     }
     #scroll-section-0 h1 {
 		font-size: 9vw;
+    }#scroll-section-5 .b, .c {
+
+    }
+    #scroll-section-5 .b {
+        top: 15%;
+        left: 47%;
     }
     #scroll-section-5 .c {
         left: 30%;

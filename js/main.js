@@ -87,19 +87,19 @@
                 videoImages : []
             },
             values: {                
-                videoImageCount: 145, 
-                imgaeSequence: [0, 144],
+                videoImageCount: 90, 
+                imgaeSequence: [0, 89],
                 canvas_opacity_in: [0, 1, { start: 0, end: 0.1}],
                 canvas_opacity_out: [1,0, { start: 0.7, end: 0.85 }],
                 messageA_translateY_in: [20, 0, { start: 0, end: 0.2 }],
-                messageB_translateY_in: [20, 0, { start: 0.3, end: 0.45 }],
-                messageC_translateY_in: [20, 0, { start: 0.6, end: 0.65 }],
+                messageB_translateY_in: [10, 0, { start: 0.3, end: 0.45 }],
+                messageC_translateY_in: [10, 0, { start: 0.6, end: 0.65 }],
                 messageA_opacity_in: [0, 1, { start: 0, end: 0.2 }],
                 messageB_opacity_in: [0, 1, { start: 0.3, end: 0.45}],
                 messageC_opacity_in: [0, 1, { start: 0.6, end: 0.65 }],
                 messageA_translateY_out: [0, -20, { start: 0.25, end: 0.3 }],
                 messageB_translateY_out: [0, -10, { start: 0.5, end: 0.6 }],
-                messageC_translateY_out: [0, -10, { sstart: 0.7, end: 0.8 }],
+                messageC_translateY_out: [0, -10, { start: 0.7, end: 0.8 }],
                 messageA_opacity_out: [1, 0, { start: 0.25, end: 0.3  }],
                 messageB_opacity_out: [1, 0, {  start: 0.5, end: 0.6 }],
                 messageC_opacity_out: [1, 0, { start: 0.7, end: 0.8 }],
@@ -109,7 +109,6 @@
         },
         {//6 
             type:'normal',
-            heightNum:2,
             scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-6'),
@@ -142,11 +141,11 @@
         for (let i =1; i < sceneInfo[5].values.videoImageCount+1; i++) {
             imgElem1 = new Image();
             if (i < 10) {
-                imgElem1.src = `./images/002/000${i}.jpg`;
+                imgElem1.src = `./images/003/000${i}.jpg`;
             } else if (i <100) {
-                imgElem1.src = `./images/002/00${i}.jpg`;
+                imgElem1.src = `./images/003/00${i}.jpg`;
             } else {
-                imgElem1.src = `./images/002/0${i}.jpg`;
+                imgElem1.src = `./images/003/0${i}.jpg`;
             }
             sceneInfo[5].objs.videoImages.push(imgElem1);
         }
