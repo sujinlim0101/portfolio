@@ -7,6 +7,10 @@ html {
 body {
     overflow-x: hidden;
 }
+.container {
+    background-color: #f2f2f2;
+    padding-bottom: 50vh;
+}
 .project-container {
     overflow-x: hidden; 
     padding-top: 20vh;
@@ -21,6 +25,9 @@ body {
 .project {
     position:relative;
     padding: 1.5rem
+}
+.project-name, .nav-links a {
+    font-family: 'Noto Sans KR', sans-serif;
 }
 .project img {
     border: 1px solid #d2d2d2;
@@ -45,7 +52,8 @@ body {
 
 }
 .projects-message h3 {
-    border-bottom: 1px #b2b2b2 solid;
+    font-family: 'Do Hyeon', sans-serif;
+    border-bottom: 1px #292929 solid;
     padding-left: 4rem;
     padding-right: 4rem;
 
@@ -55,6 +63,7 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
 }
-.footer {
-    margin-top: 50vh;
+.project a {
+    text-decoration: none;
+    color:black
 }

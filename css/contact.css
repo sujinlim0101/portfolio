@@ -1,3 +1,61 @@
+@charset 'utf-8';
+
+html {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+}
+body {
+    overflow-x: hidden;
+}
+.nav-links a {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.main-message {
+    font-size: 1.2rem;
+    padding-top: 25vh;
+    line-height: 1.8;
+    text-align: center;
+}
+.contact-detail {
+    padding: 1em 1em
+}
+.contact-title {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+.contact-title h3 {
+    font-family: 'Do Hyeon', sans-serif;
+    border-bottom: 1px #292929 solid;
+}
+.contact-title, .contact-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact-info-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.contact-detail a {
+    text-decoration: none;
+    color: black;
+}
+.contact-info {
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid #b2b2b2;
+}
 .footer {
-    margin-top: 100vh;
+    margin-top: 50vh;
+}
+.contact-img img {
+    width: 290px;
+    margin-bottom: 3em;
+}
+@media (min-width: 1024px){
+    .contact-img img {
+        width: 500px;
+        margin-bottom: 5vh;
+    }
+
 }

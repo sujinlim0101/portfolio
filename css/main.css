@@ -118,6 +118,9 @@ body {
     justify-content: center;
     font-weight: bold;
 }
+#scroll-section-3 {
+    padding-top: 40vh;
+}
 #scroll-section-3 .transition-message h3 {
     color: #8c440f;
 } 
