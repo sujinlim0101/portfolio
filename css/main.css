@@ -70,7 +70,7 @@ body {
 
 }
 .main-message {
-    top: 30vh;
+    top: 25vh;
     left:10vw;
 	margin: 5px 0;
 	height: 3em;
@@ -112,7 +112,7 @@ body {
 }
 .transition-message h3 {
     font-family: 'Do Hyeon','Black Han Sans', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -236,6 +236,10 @@ body {
 
 
 @media (min-width: 1024px) {
+    .main-message {
+        top: 30vh;
+        left:20vw;
+    }
     .transition {
         padding: 10vw 10vw;
     }
