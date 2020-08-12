@@ -99,12 +99,12 @@
                 messageC_opacity_in: [0, 1, { start: 0.6, end: 0.65 }],
                 messageA_translateY_out: [0, -20, { start: 0.25, end: 0.3 }],
                 messageB_translateY_out: [0, -10, { start: 0.5, end: 0.6 }],
-                messageC_translateY_out: [0, -10, { start: 0.7, end: 0.8 }],
+                messageC_translateY_out: [0, -5, { start: 0.7, end: 0.8 }],
                 messageA_opacity_out: [1, 0, { start: 0.25, end: 0.3  }],
                 messageB_opacity_out: [1, 0, {  start: 0.5, end: 0.6 }],
-                messageC_opacity_out: [1, 0, { start: 0.7, end: 0.8 }],
+                messageC_opacity_out: [1, 0, { start: 0.7, end: 0.85 }],
                 pinB_scaleY: [0.5, 1, { start: 0.4, end: 0.6 }],
-                pinC_scaleY: [0.5, 1, { start: 0.55, end: 0.75 }]
+                pinC_scaleY: [0.5, 1, { start: 0.55, end: 0.8 }]
             }
         },
         {//6 

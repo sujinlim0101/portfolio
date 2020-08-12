@@ -11,8 +11,8 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
 }
 .main-message {
-    font-size: 1.2rem;
-    padding-top: 25vh;
+    font-size: 1rem;
+    padding-top: 15vh;
     line-height: 1.8;
     text-align: center;
 }
@@ -56,6 +56,11 @@ body {
     .contact-img img {
         width: 500px;
         margin-bottom: 5vh;
+    }
+    .main-message {
+        font-size: 1.2rem;
+        padding-top: 25vh;
+
     }
 
 }
