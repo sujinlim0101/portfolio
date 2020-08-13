@@ -20,11 +20,11 @@ body.before-load {
     color:white;
     transition: background-color 1s linear !important;
 }
-#transition-container.little-yellow {
+/* #transition-container.little-yellow {
     background-color: #fffdf9 !important;
     color:black;
     transition: background-color 1s linear;
-}
+} */
 .container {
 	/* iPhone 가로 스크롤 방지 */
 	overflow-x: hidden;
@@ -105,9 +105,7 @@ body.before-load {
 #scroll-section-2 {
     padding-top: 10vh;
 }
-#scroll-section-4 {
-    padding-top: 20vh;
-} 
+
 .transition {
     display:flex;
     align-items: center;
