@@ -42,7 +42,7 @@
         },
         {//1  sticky가 아니지만 heigth를 비율로 조정하기 위해 씀
             type:'sticky', 
-            heightNum:0.5,
+            heightNum:1,
             scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-1'),
@@ -355,7 +355,7 @@
             scrollLoop();
             checkNav();
         } )
-        
+
         window.addEventListener('resize',setLayout);
 
 
