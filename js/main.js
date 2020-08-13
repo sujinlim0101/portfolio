@@ -173,7 +173,7 @@
                 currentScene = i;
                 break;
             }
-        }
+        } 
         //세로 기준에 맞추어 캔버스 크기를 조절함 
         document.body.setAttribute('id',`show-scene-${currentScene}`);
         const heightRatio = document.documentElement.clientHeight / 1080;
