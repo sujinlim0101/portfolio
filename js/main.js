@@ -42,7 +42,7 @@
         },
         {//1  sticky가 아니지만 heigth를 비율로 조정하기 위해 씀
             type:'sticky', 
-            heightNum:1,
+            heightNum:0.5,
             scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-1'),
@@ -186,7 +186,6 @@
 
         switch(currentScene) {
             case 0:
-                console.log('section 0 ')
                 //섹션0으로 들어올 때 배경색 화이트 빼기
                 transition_conatiner.removeAttribute('class','black-ani')
                 let sequence = Math.round(calcValues(values.imgaeSequence, currentYOffset));
@@ -346,17 +345,31 @@
         if (enterNewScene) return;
         playAnimation();
     }
-    window.addEventListener('resize',setLayout);
-    window.addEventListener('scroll',()=>{
-        scrollLoop();
-        checkNav();
-    } )
+
     window.addEventListener('load', () => {
+        document.body.classList.remove('before-load');
         setLayout();
         sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0],0,0);
-        sceneInfo[5].objs.context.drawImage(sceneInfo[5].objs.videoImages[0],0,0);
 
+        window.addEventListener('scroll',()=>{
+            scrollLoop();
+            checkNav();
+        } )
+        
+        window.addEventListener('resize',setLayout);
+
+
+        window.addEventListener('orientationchange', () => {
+            setTimeout(setLayout, 500);
+        });
+
+        document.querySelector('.loading').addEventListener('transitionend', (e) => {
+            if(document.querySelector('.loading')) {
+                document.body.removeChild(e.currentTarget);
+            }
+        });
     });
+
     setCanvasImages();
 
 })();
