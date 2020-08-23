@@ -104,8 +104,8 @@ body.before-load {
 }
 
 .transition {
-  display: flex;
   display: -ms-flexbox;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
@@ -113,8 +113,8 @@ body.before-load {
 .transition-message h3 {
   font-family: "Do Hyeon", "Black Han Sans", sans-serif;
   font-size: 2rem;
-  display: flex;
   display: -ms-flexbox;
+  display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
@@ -133,8 +133,8 @@ body.before-load {
   font-weight: bold;
   margin-top: 2rem;
   line-height: 2.3;
-  display: flex;
   display: -ms-flexbox;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -144,8 +144,8 @@ body.before-load {
 }
 .morning-img-container,
 .work-img-container {
-  display: flex;
   display: -ms-flexbox;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -202,8 +202,8 @@ body.before-load {
   font-size: 2rem;
 }
 .introduce-projects-container {
-  display: flex;
   display: -ms-flexbox;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -226,8 +226,8 @@ body.before-load {
   width: 300px;
 }
 .project-img-container {
-  display: flex;
   display: -ms-flexbox;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -242,8 +242,8 @@ body.before-load {
   position: relative;
 }
 .loading {
-  display: flex;
   display: -ms-flexbox;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -328,6 +328,6 @@ body.before-load {
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   /* Enter your style code */
   #scroll-section-2 {
-    background-color: black;
+    background-color: rgb(62 62 62);
   }
 }
