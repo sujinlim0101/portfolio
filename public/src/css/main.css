@@ -105,6 +105,7 @@ body.before-load {
 
 .transition {
   display: flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: center;
   padding: 2rem;
@@ -113,6 +114,7 @@ body.before-load {
   font-family: "Do Hyeon", "Black Han Sans", sans-serif;
   font-size: 2rem;
   display: flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: center;
   font-weight: bold;
@@ -132,6 +134,7 @@ body.before-load {
   margin-top: 2rem;
   line-height: 2.3;
   display: flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: center;
 }
@@ -142,6 +145,7 @@ body.before-load {
 .morning-img-container,
 .work-img-container {
   display: flex;
+  display: -ms-flexbox;
   justify-content: center;
   align-items: center;
 }
@@ -199,6 +203,7 @@ body.before-load {
 }
 .introduce-projects-container {
   display: flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: center;
 }
@@ -222,6 +227,7 @@ body.before-load {
 }
 .project-img-container {
   display: flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: center;
 }
@@ -237,6 +243,7 @@ body.before-load {
 }
 .loading {
   display: flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: center;
   position: fixed;
