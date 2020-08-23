@@ -148,6 +148,7 @@ body.before-load {
 #scroll-section-4 {
   transition: background-color 2s linear !important;
   background-color: #f9f3e4;
+  padding: 10vh;
 }
 .work-img-container {
   margin-top: 10vh;
