@@ -1,0 +1,24 @@
+{
+  "name": "portpolio-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel ./public/src -d ./public/lib -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sujinlim0101/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sujinlim0101/portfolio/issues"
+  },
+  "homepage": "https://github.com/sujinlim0101/portfolio#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-minify": "^0.5.1"
+  }
+}
