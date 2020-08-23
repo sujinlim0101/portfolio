@@ -148,6 +148,9 @@ body.before-load {
 .tarnsition.b h3 {
   text-align: center;
 }
+.transition-message.c {
+  width: 100%;
+}
 .morning-img-container,
 .work-img-container {
   display: -ms-flexbox;
@@ -263,7 +266,6 @@ body.before-load {
   display: -ms-flexbox;
   display: flex;
   flex: 0 1 auto;
-
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -348,6 +350,6 @@ body.before-load {
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   /* Enter your style code */
   #scroll-section-2 {
-    background-color: rgb(62 62 62);
+    background-color: #626262;
   }
 }
