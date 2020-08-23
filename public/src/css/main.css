@@ -317,3 +317,10 @@ body.before-load {
     font-size: 3vw;
   }
 }
+/* IE10+ */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* Enter your style code */
+  #scroll-section-2 {
+    background-color: black;
+  }
+}
