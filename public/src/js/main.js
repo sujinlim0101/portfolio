@@ -136,11 +136,11 @@
     for (let i = 1; i < sceneInfo[0].values.videoImageCount + 1; i++) {
       imgElem = new Image();
       if (i < 10) {
-        imgElem.src = `src/images/001/000${i}.jpg`;
+        imgElem.src = `public/src/images/001/000${i}.jpg`;
       } else if (i < 100) {
-        imgElem.src = `src/images/001/00${i}.jpg`;
+        imgElem.src = `public/src/images/001/00${i}.jpg`;
       } else {
-        imgElem.src = `src/images/001/0${i}.jpg`;
+        imgElem.src = `public/src/images/001/0${i}.jpg`;
       }
       sceneInfo[0].objs.videoImages.push(imgElem);
     }
@@ -148,11 +148,11 @@
     for (let i = 1; i < sceneInfo[5].values.videoImageCount + 1; i++) {
       imgElem1 = new Image();
       if (i < 10) {
-        imgElem1.src = `src/images/003/000${i}.jpg`;
+        imgElem1.src = `public/src/images/003/000${i}.jpg`;
       } else if (i < 100) {
-        imgElem1.src = `src/images/003/00${i}.jpg`;
+        imgElem1.src = `public/src/images/003/00${i}.jpg`;
       } else {
-        imgElem1.src = `src/images/003/0${i}.jpg`;
+        imgElem1.src = `public/src/images/003/0${i}.jpg`;
       }
       sceneInfo[5].objs.videoImages.push(imgElem1);
     }
