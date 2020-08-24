@@ -361,7 +361,7 @@ body.before-load {
   .introduce-message a {
     display: block;
   }
-  .before-load .loading {
-    display: none;
+  .loading-circle circle {
+    opacity: 0;
   }
 }
