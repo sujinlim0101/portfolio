@@ -8,7 +8,9 @@
   overflow-x: hidden;
 }
 .nav-links {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
   max-width: 1000px;
   height: 100%;
@@ -23,13 +25,6 @@
   height: 52px;
   padding: 0 1rem;
   border-bottom: 1px solid #d4d2d2;
-}
-.nav-links {
-  display: flex;
-  align-items: center;
-  max-width: 1000px;
-  height: 100%;
-  margin: 0 auto;
 }
 .nav-links a {
   font-size: 0.8rem;
@@ -59,4 +54,11 @@
   justify-content: center;
   text-align: center;
   background-color: #fff8ee;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .nav a {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: end;
+  }
 }
