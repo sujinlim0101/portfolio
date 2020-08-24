@@ -65,9 +65,18 @@ p {
   font-size: 1.2rem;
   font-weight: 600;
 }
-.project a {
+.project.b,
+.c p {
+  text-decoration: underline;
+}
+
+.project .web-link {
   text-decoration: none;
   color: black;
+}
+.github {
+  padding-top: 1rem;
+  color: blue;
 }
 /* IE10+ */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
