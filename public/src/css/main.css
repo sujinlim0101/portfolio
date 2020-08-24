@@ -362,6 +362,6 @@ body.before-load {
     display: block;
   }
   .before-load .loading {
-    opacity: 0;
+    display: none;
   }
 }
