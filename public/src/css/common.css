@@ -49,10 +49,12 @@
 }
 .footer {
   height: 10vh;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   background-color: #fff8ee;
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
