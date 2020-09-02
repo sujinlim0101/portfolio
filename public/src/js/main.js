@@ -5,10 +5,11 @@
   let enterNewScene = false; //새로운 씬이 시작되는 순간 true
   const sceneInfo = [
     {
-      //0
+      //0섹션 정보
       type: "sticky",
       heightNum: 5,
       scrollHeight: 0,
+      //0섹션 objs
       objs: {
         container: document.querySelector("#scroll-section-0"),
         messageA: document.querySelector(".main-message.a"),
@@ -17,12 +18,16 @@
         messageD: document.querySelector(".main-message.d"),
         canvas: document.querySelector("#video-canvas-0"),
         context: document.querySelector("#video-canvas-0").getContext("2d"),
+        //비디오(이미지)를 setCanvasImages함수에서 넣어줌
         videoImages: [],
       },
+      //0섹션 값들로 쓰이는 것들
       values: {
         videoImageCount: 72,
         imgaeSequence: [0, 71],
+        //흐려지는 효과
         canvas_opacity: [1, 0, { start: 0.9, end: 1 }],
+        //0.1과 0.2 사이의 스크롤 비율에서 0~1만큼 opacity가 투명했다가(0) 선명해진다.(1)
         messageA_opacity_in: [0, 1, { start: 0.1, end: 0.2 }],
         messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
         messageC_opacity_in: [0, 1, { start: 0.5, end: 0.6 }],
@@ -172,6 +177,7 @@
     let totalScrollHeight = 0;
     yOffset = window.pageYOffset;
     for (let i = 0; i < sceneInfo.length; i++) {
+      //전 섹션까지의 모든 합을 구한뒤 지금 yOffset과 비교하여 씬을 알아냄
       totalScrollHeight += sceneInfo[i].scrollHeight;
       if (totalScrollHeight >= yOffset) {
         currentScene = i;
@@ -185,6 +191,7 @@
     sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
     sceneInfo[5].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
   }
+
   function playAnimation() {
     const objs = sceneInfo[currentScene].objs;
     const values = sceneInfo[currentScene].values;
@@ -416,6 +423,8 @@
         break;
     }
   }
+  //스크롤 비율에 따라 opacity, tansform(scaleY)가 달라져야 한다
+  //비율이 0과 1사이의 값이 계산되며,
   function calcValues(values, currentYOffset) {
     let rv;
     const scrollHeight = sceneInfo[currentScene].scrollHeight;
@@ -428,6 +437,7 @@
       const partScrollStart = values[2].start * scrollHeight;
       const partScrollEnd = values[2].end * scrollHeight;
       const partScrollHeight = partScrollEnd - partScrollStart;
+      //정해진 스크롤 범위 안에 있으면 사이값을 계산한다.
       if (
         currentYOffset >= partScrollStart &&
         currentYOffset <= partScrollEnd
