@@ -247,8 +247,8 @@ body.before-load {
 }
 .project-container {
   padding: 2.5rem 1rem;
-  width: 300px;
-  height: 400px;
+  width: 350px;
+  height: 300px;
 }
 .project-img-container {
   display: -ms-flexbox;

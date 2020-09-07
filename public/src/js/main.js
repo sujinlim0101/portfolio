@@ -27,7 +27,7 @@
         imgaeSequence: [0, 71],
         //흐려지는 효과
         canvas_opacity: [1, 0, { start: 0.9, end: 1 }],
-        //0.1과 0.2 사이의 스크롤 비율에서 0~1만큼 opacity가 투명했다가(0) 선명해진다.(1)
+        //예) 0.1과 0.2 사이의 스크롤 비율에서 0~1만큼 opacity가 투명했다가(0) 선명해진다(1).
         messageA_opacity_in: [0, 1, { start: 0.1, end: 0.2 }],
         messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
         messageC_opacity_in: [0, 1, { start: 0.5, end: 0.6 }],
@@ -191,6 +191,13 @@
     sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
     sceneInfo[5].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
   }
+  function blackIn() {
+    transition_conatiner.setAttribute("class", "black-ani");
+  }
+  function blackOut() {
+    //너무 빨리 스크롤 경우에 black-ani가 빠지지 않을 수 있기 떄문에 모든 section에 추가해줌.
+    transition_conatiner.removeAttribute("class", "black-ani");
+  }
 
   function playAnimation() {
     const objs = sceneInfo[currentScene].objs;
@@ -206,9 +213,7 @@
 
     switch (currentScene) {
       case 0:
-        //섹션0으로 들어올 때 배경색 화이트 빼기
-        //너무 빨리 스크롤 경우에 black-ani가 빠지지 않을 수 있기 떄문에 모든 section에 추가해줌.
-        transition_conatiner.removeAttribute("class", "black-ani");
+        blackOut();
         let sequence = Math.round(
           calcValues(values.imgaeSequence, currentYOffset)
         );
@@ -303,19 +308,14 @@
         }
         break;
       case 1:
-        //섹션 1-3까지 영역의 black-ani 추가
-        transition_conatiner.removeAttribute("class", "black-ani");
+        blackOut();
       case 2:
-        transition_conatiner.setAttribute("class", "black-ani");
+        blackIn();
         break;
       case 3:
-        transition_conatiner.removeAttribute("class", "black-ani");
-        transition_conatiner.setAttribute("class", "little-yellow");
-
+        blackOut();
         break;
       case 4:
-        objs.container.style.background = "#f9f3e4";
-
         if (scrollRatio > 0.8) {
           //부드럽게 캔버스로 넘어가기 위해서 하얀색 배경으로 바꿈.
           objs.container.style.background = "white";
@@ -419,8 +419,6 @@
           )})`;
         }
         break;
-      case 6:
-        break;
     }
   }
   //스크롤 비율에 따라 opacity, tansform(scaleY)가 달라져야 한다
@@ -492,12 +490,24 @@
     setLayout();
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
 
+    // window.addEventListener("scroll", () => {
+    //   scrollLoop();
+    //   checkNav();
+    // });
+
+    //throttling
     window.addEventListener("scroll", () => {
-      scrollLoop();
-      checkNav();
+      throttle(() => {
+        scrollLoop();
+        checkNav();
+      }, 16);
     });
+
     //리사이즈할 떄 setLayout 다시해줘야함.
-    window.addEventListener("resize", setLayout);
+    // window.addEventListener("resize", setLayout);
+
+    //디바운스
+    window.addEventListener("resize", debounce(setLayout, 250));
 
     //모바일에서 가로모드로 전환
     window.addEventListener("orientationchange", () => {
