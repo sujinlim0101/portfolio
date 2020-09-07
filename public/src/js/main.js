@@ -4,7 +4,10 @@
   let currentScene = 0; //현재 활성화된 씬
   let enterNewScene = false; //새로운 씬이 시작되는 순간 true
   let throttleCheck, debounceCheck;
+  let checkBlack = false;
   const transitionContainer = document.querySelector("#transition-container");
+  const io = new IntersectionObserver((entries, observer) => {});
+
   const sceneInfo = [
     {
       //0섹션 정보
@@ -129,6 +132,10 @@
       },
     },
   ];
+  (() => {
+    console.log(sceneInfo[2].objs.container);
+    io.observe(sceneInfo[2].objs.container);
+  })();
 
   //nav의 sticky와 투명도 조절.
   function checkNav() {
@@ -196,10 +203,12 @@
   }
   function blackIn() {
     transitionContainer.setAttribute("class", "black-ani");
+    checkBlack = true;
   }
   function blackOut() {
     //너무 빨리 스크롤 경우에 black-ani가 빠지지 않을 수 있기 떄문에 모든 section에 추가해줌.
     transitionContainer.removeAttribute("class", "black-ani");
+    checkBlack = false;
   }
 
   function playAnimation() {
@@ -308,12 +317,18 @@
         }
         break;
       case 1:
-        blackOut();
+        if (checkBlack) {
+          blackOut();
+        }
       case 2:
-        blackIn(), 16;
+        if (!checkBlack) {
+          blackIn();
+        }
         break;
       case 3:
-        blackOut();
+        if (checkBlack) {
+          blackOut();
+        }
         break;
       case 4:
         if (scrollRatio > 0.8) {
