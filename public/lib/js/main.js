@@ -13,7 +13,7 @@ currentYOffset>=partScrollStart&&currentYOffset<=partScrollEnd?rv=(currentYOffse
 prevScrollHeight+=sceneInfo[i].scrollHeight;if(yOffset>prevScrollHeight+sceneInfo[currentScene].scrollHeight&&(enterNewScene=!0,currentScene++),yOffset<prevScrollHeight){// 현 스크롤 값이 전 섹션 + 지금 섹션의 값보다 더 값이 작은(-1) 씬으로 감.
 if(0===currentScene)// 모바일에서 바운스 되는 것 떄문에 yoffset이 -되어 currentscene이 -되는 것 방지
 return;enterNewScene=!0,currentScene--}// 씬에 처음으로 들어갔을 때 이상값이 생기는 현상 때문에 이 때 한번 패스하고, return.
-document.body.setAttribute("id","show-scene-"+currentScene),enterNewScene||playAnimation()}function throttle(callback,milliseconds){return function(){var _arguments=arguments;throttleCheck||(throttleCheck=setTimeout(function(){callback.apply(void 0,_arguments),throttleCheck=!1},milliseconds))}}function debounce(callback,milliseconds){return function(){var _arguments2=arguments;// clearTimeout을 이용하여 이벤트 발생을 무시함.
+document.body.setAttribute("id","show-scene-"+currentScene),enterNewScene||playAnimation()}function debounce(callback,milliseconds){return function(){var _arguments2=arguments;// clearTimeout을 이용하여 이벤트 발생을 무시함.
 // 마지막 호출에 set한 시간이 지난 후에 한번만, 이벤트가 호출되도록 함.
 clearTimeout(debounceCheck),debounceCheck=setTimeout(function(){callback.apply(void 0,_arguments2)},milliseconds)}}var yOffset=0,prevScrollHeight=0,currentScene=0,enterNewScene=!1,throttleCheck=void 0,debounceCheck=void 0,checkBlack=!1,transitionContainer=document.querySelector("#transition-container"),sceneInfo=[{//0섹션 정보
 type:"sticky",heightNum:5,scrollHeight:0,//0섹션 objs
@@ -36,15 +36,17 @@ type:"normal",scrollHeight:0,objs:{container:document.querySelector("#scroll-sec
 //todo: intersectionObserver로 성능개선
 // const io = new IntersectionObserver((entries, observer) => {});
 //세영역을 묶어 background 색을 바꾸는 영역, scrollHeight이 필요없어 따로 놓음
-(function(){console.log(sceneInfo[2].objs.container),io.observe(sceneInfo[2].objs.container)})(),window.addEventListener("load",function(){//로드가 끝나면 before load 클래스를 없앰.
-// window.addEventListener("scroll", () => {
-//   scrollLoop();
-//   checkNav();
-// });
+window.addEventListener("load",function(){//로드가 끝나면 before load 클래스를 없앰.
 // throttling
+// window.addEventListener("scroll", () => {
+//   throttle(() => {
+//     scrollLoop();
+//     checkNav();
+//   }, 16);
+// });
 // 리사이즈할 떄 setLayout 다시해줘야함.
 // window.addEventListener("resize", setLayout);
 //디바운스
 //모바일에서 가로모드로 전환
 //트랜지션효과 때문에 div(.loading)을 바로 없애지 않고 transitionend 이후에 제거.
-document.body.classList.remove("before-load"),setLayout(),sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0],0,0),window.addEventListener("scroll",function(){throttle(function(){scrollLoop(),checkNav()},16)}),window.addEventListener("resize",debounce(setLayout,250)),window.addEventListener("orientationchange",function(){setTimeout(setLayout,500)}),document.querySelector(".loading").addEventListener("transitionend",function(e){document.querySelector(".loading")&&document.body.removeChild(e.currentTarget)})}),function(){for(var imgElem=void 0,i=1;i<sceneInfo[0].values.videoImageCount+1;i++)imgElem=new Image,imgElem.src=10>i?"public/src/images/001/000"+i+".jpg":100>i?"public/src/images/001/00"+i+".jpg":"public/src/images/001/0"+i+".jpg",sceneInfo[0].objs.videoImages.push(imgElem);for(var imgElem1=void 0,_i=1;_i<sceneInfo[5].values.videoImageCount+1;_i++)imgElem1=new Image,imgElem1.src=10>_i?"public/src/images/003/000"+_i+".jpg":100>_i?"public/src/images/003/00"+_i+".jpg":"public/src/images/003/0"+_i+".jpg",sceneInfo[5].objs.videoImages.push(imgElem1)}()})();
+document.body.classList.remove("before-load"),setLayout(),sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0],0,0),window.addEventListener("scroll",function(){scrollLoop(),checkNav()}),window.addEventListener("resize",debounce(setLayout,250)),window.addEventListener("orientationchange",function(){setTimeout(setLayout,500)}),document.querySelector(".loading").addEventListener("transitionend",function(e){document.querySelector(".loading")&&document.body.removeChild(e.currentTarget)})}),function(){for(var imgElem=void 0,i=1;i<sceneInfo[0].values.videoImageCount+1;i++)imgElem=new Image,imgElem.src=10>i?"public/src/images/001/000"+i+".jpg":100>i?"public/src/images/001/00"+i+".jpg":"public/src/images/001/0"+i+".jpg",sceneInfo[0].objs.videoImages.push(imgElem);for(var imgElem1=void 0,_i=1;_i<sceneInfo[5].values.videoImageCount+1;_i++)imgElem1=new Image,imgElem1.src=10>_i?"public/src/images/003/000"+_i+".jpg":100>_i?"public/src/images/003/00"+_i+".jpg":"public/src/images/003/0"+_i+".jpg",sceneInfo[5].objs.videoImages.push(imgElem1)}()})();

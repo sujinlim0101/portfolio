@@ -136,10 +136,6 @@
       },
     },
   ];
-  (() => {
-    console.log(sceneInfo[2].objs.container);
-    io.observe(sceneInfo[2].objs.container);
-  })();
 
   //nav의 sticky와 투명도 조절.
   function checkNav() {
@@ -532,18 +528,18 @@
     setLayout();
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
 
-    // window.addEventListener("scroll", () => {
-    //   scrollLoop();
-    //   checkNav();
-    // });
+    window.addEventListener("scroll", () => {
+      scrollLoop();
+      checkNav();
+    });
 
     // throttling
-    window.addEventListener("scroll", () => {
-      throttle(() => {
-        scrollLoop();
-        checkNav();
-      }, 16);
-    });
+    // window.addEventListener("scroll", () => {
+    //   throttle(() => {
+    //     scrollLoop();
+    //     checkNav();
+    //   }, 16);
+    // });
 
     // 리사이즈할 떄 setLayout 다시해줘야함.
     // window.addEventListener("resize", setLayout);
