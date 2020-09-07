@@ -3,6 +3,8 @@
   let prevScrollHeight = 0; //현재 스크롤 위치 이전의 섹션들의 높이를 더한 값
   let currentScene = 0; //현재 활성화된 씬
   let enterNewScene = false; //새로운 씬이 시작되는 순간 true
+  let throttleCheck, debounceCheck;
+  const transitionContainer = document.querySelector("#transition-container");
   const sceneInfo = [
     {
       //0섹션 정보
@@ -127,6 +129,7 @@
       },
     },
   ];
+
   //nav의 sticky와 투명도 조절.
   function checkNav() {
     if (yOffset > 44) {
@@ -192,11 +195,11 @@
     sceneInfo[5].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
   }
   function blackIn() {
-    transition_conatiner.setAttribute("class", "black-ani");
+    transitionContainer.setAttribute("class", "black-ani");
   }
   function blackOut() {
     //너무 빨리 스크롤 경우에 black-ani가 빠지지 않을 수 있기 떄문에 모든 section에 추가해줌.
-    transition_conatiner.removeAttribute("class", "black-ani");
+    transitionContainer.removeAttribute("class", "black-ani");
   }
 
   function playAnimation() {
@@ -207,9 +210,6 @@
     const scrollRatio =
       (yOffset - prevScrollHeight) / sceneInfo[currentScene].scrollHeight;
     //부드러운 트랜지션을 위한 transition container
-    const transition_conatiner = document.querySelector(
-      "#transition-container"
-    );
 
     switch (currentScene) {
       case 0:
@@ -310,7 +310,7 @@
       case 1:
         blackOut();
       case 2:
-        blackIn();
+        blackIn(), 16;
         break;
       case 3:
         blackOut();
@@ -470,9 +470,9 @@
       currentScene++;
     }
     if (yOffset < prevScrollHeight) {
-      //현 스크롤 값이 전 섹션 + 지금 섹션의 값보다 더 값이 작은(-1) 씬으로 감.
+      // 현 스크롤 값이 전 섹션 + 지금 섹션의 값보다 더 값이 작은(-1) 씬으로 감.
       if (currentScene === 0) {
-        //모바일에서 바운스 되는 것 떄문에 yoffset이 -되어 currentscene이 -되는 것 방지
+        // 모바일에서 바운스 되는 것 떄문에 yoffset이 -되어 currentscene이 -되는 것 방지
         return;
       }
       enterNewScene = true;
@@ -483,6 +483,28 @@
     if (enterNewScene) return;
     playAnimation();
   }
+  function throttle(callback, milliseconds) {
+    return function () {
+      if (!throttleCheck) {
+        // setTimeout을 이용하여 콜백이 실행될 수 있도록 하였고,
+        // 실행이 끝난 후에는 다시 throttleCheck를 false로 만들어 주어, 설정한 주기마다 이벤트가 한 번씩만 호출되도록 하였습니다.
+        throttleCheck = setTimeout(() => {
+          callback(...arguments);
+          throttleCheck = false;
+        }, milliseconds);
+      }
+    };
+  }
+  function debounce(callback, milliseconds) {
+    return function () {
+      // clearTimeout을 이용하여 이벤트 발생을 무시함.
+      // 마지막 호출에 set한 시간이 지난 후에 한번만, 이벤트가 호출되도록 함.
+      clearTimeout(debounceCheck);
+      debounceCheck = setTimeout(() => {
+        callback(...arguments);
+      }, milliseconds);
+    };
+  }
 
   window.addEventListener("load", () => {
     //로드가 끝나면 before load 클래스를 없앰.
@@ -490,24 +512,24 @@
     setLayout();
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
 
-    // window.addEventListener("scroll", () => {
-    //   scrollLoop();
-    //   checkNav();
-    // });
-
-    //throttling
     window.addEventListener("scroll", () => {
-      lodash.throttle(() => {
+      scrollLoop();
+      checkNav();
+    });
+
+    // throttling
+    window.addEventListener("scroll", () => {
+      throttle(() => {
         scrollLoop();
         checkNav();
       }, 16);
     });
 
-    //리사이즈할 떄 setLayout 다시해줘야함.
+    // 리사이즈할 떄 setLayout 다시해줘야함.
     // window.addEventListener("resize", setLayout);
 
     //디바운스
-    window.addEventListener("resize", lodash.debounce(setLayout, 250));
+    window.addEventListener("resize", debounce(setLayout, 250));
 
     //모바일에서 가로모드로 전환
     window.addEventListener("orientationchange", () => {
@@ -522,6 +544,5 @@
         }
       });
   });
-
   setCanvasImages();
 })();
