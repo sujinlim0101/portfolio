@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "braces": "^2.3.2",
-    "lodash": "^4.17.20"
+    "braces": "^2.3.2"
   }
 }

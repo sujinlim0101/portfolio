@@ -5,8 +5,12 @@
   let enterNewScene = false; //새로운 씬이 시작되는 순간 true
   let throttleCheck, debounceCheck;
   let checkBlack = false;
+
+  //todo: intersectionObserver로 성능개선
+  // const io = new IntersectionObserver((entries, observer) => {});
+
+  //세영역을 묶어 background 색을 바꾸는 영역, scrollHeight이 필요없어 따로 놓음
   const transitionContainer = document.querySelector("#transition-container");
-  const io = new IntersectionObserver((entries, observer) => {});
 
   const sceneInfo = [
     {
@@ -320,6 +324,7 @@
         if (checkBlack) {
           blackOut();
         }
+        break;
       case 2:
         if (!checkBlack) {
           blackIn();
@@ -527,10 +532,10 @@
     setLayout();
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
 
-    window.addEventListener("scroll", () => {
-      scrollLoop();
-      checkNav();
-    });
+    // window.addEventListener("scroll", () => {
+    //   scrollLoop();
+    //   checkNav();
+    // });
 
     // throttling
     window.addEventListener("scroll", () => {
