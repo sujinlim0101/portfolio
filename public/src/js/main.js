@@ -497,7 +497,7 @@
 
     //throttling
     window.addEventListener("scroll", () => {
-      _.throttle(() => {
+      lodash.throttle(() => {
         scrollLoop();
         checkNav();
       }, 16);
@@ -507,7 +507,7 @@
     // window.addEventListener("resize", setLayout);
 
     //디바운스
-    window.addEventListener("resize", _.debounce(setLayout, 250));
+    window.addEventListener("resize", lodash.debounce(setLayout, 250));
 
     //모바일에서 가로모드로 전환
     window.addEventListener("orientationchange", () => {

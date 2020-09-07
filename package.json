@@ -1,7 +1,7 @@
 {
   "name": "portpolio-frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "url은 https://master.d2wixcbowv1i5n.amplifyapp.com/index.html 입니다.",
   "main": "index.js",
   "scripts": {
     "build": "babel ./public/src -d ./public/lib -w"
@@ -23,6 +23,7 @@
     "babel-preset-minify": "^0.5.1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "lodash": "^4.17.20"
   }
 }
