@@ -351,18 +351,16 @@ body.before-load {
     background-color: white;
   }
   .transition-message.a,
-  .transition-desc.a {
+  .transition-message.c .transition-desc.a,
+  .transition-desc.c {
     max-width: 100%;
   }
-  .transition-desc.a {
+  .transition-desc.a,
+  .transition-desc.c {
     display: block;
   }
   .introduce-message p,
   .introduce-message a {
     display: block;
-  }
-
-  .loading-circle circle {
-    opacity: 0;
   }
 }
