@@ -18,7 +18,7 @@ body.before-load {
 #transition-container.black-ani {
   background-color: rgb(41 40 40);
   color: white;
-  transition: background-color 1.5s linear !important;
+  transition: background-color 1s ease-in-out !important;
 }
 
 .container {
@@ -96,7 +96,7 @@ body.before-load {
   padding-top: 35vh;
 }
 #scroll-section-2 {
-  padding-top: 10vh;
+  padding-top: 30vh;
 }
 .transition {
   display: -ms-flexbox;

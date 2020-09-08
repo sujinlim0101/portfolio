@@ -498,6 +498,7 @@
     if (enterNewScene) return;
     playAnimation();
   }
+
   // throttling
   // const throttling = () => {
   //   let throttleCheck;
@@ -529,13 +530,13 @@
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
   });
 
-  // throttling 하지 않은 코드
+  // todo: throttling
   window.addEventListener("scroll", () => {
     scrollLoop();
     checkNav();
   });
 
-  // 리사이즈할 떄 setLayout 다시해줘야함.
+  // 리사이즈할 떄 setLayout 다시함.
   window.addEventListener("resize", setLayout);
 
   //모바일에서 가로모드로 전환
