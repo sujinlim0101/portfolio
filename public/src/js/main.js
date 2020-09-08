@@ -2,12 +2,11 @@
   let yOffset = 0; //window.pageYOffset
   let prevScrollHeight = 0; //현재 스크롤 위치 이전의 섹션들의 높이를 더한 값
   let currentScene = 0; //현재 활성화된 씬
-  let enterNewScene = false; //새로운 씬이 시작되는 순간 true
-  let throttleCheck, debounceCheck;
-  let checkBlack = false;
+  let enterNewScene,
+    checkBlack = false; //새로운 씬이 시작되는 순간 true
 
-  //todo: intersectionObserver로 성능개선
-  // const io = new IntersectionObserver((entries, observer) => {});
+  //todo: intersectionObserver로 성능개선, throttle, debounce 이용.
+  //const io = new IntersectionObserver((entries, observer) => {});
 
   //세영역을 묶어 background 색을 바꾸는 영역, scrollHeight이 필요없어 따로 놓음
   const transitionContainer = document.querySelector("#transition-container");
@@ -499,66 +498,56 @@
     if (enterNewScene) return;
     playAnimation();
   }
-  function throttle(callback, milliseconds) {
-    return function () {
-      if (!throttleCheck) {
-        // setTimeout을 이용하여 콜백이 실행될 수 있도록 하였고,
-        // 실행이 끝난 후에는 다시 throttleCheck를 false로 만들어 주어, 설정한 주기마다 이벤트가 한 번씩만 호출되도록 하였습니다.
-        throttleCheck = setTimeout(() => {
-          callback(...arguments);
-          throttleCheck = false;
-        }, milliseconds);
-      }
-    };
-  }
-  function debounce(callback, milliseconds) {
-    return function () {
-      // clearTimeout을 이용하여 이벤트 발생을 무시함.
-      // 마지막 호출에 set한 시간이 지난 후에 한번만, 이벤트가 호출되도록 함.
-      clearTimeout(debounceCheck);
-      debounceCheck = setTimeout(() => {
-        callback(...arguments);
-      }, milliseconds);
-    };
-  }
+  // throttling
+  // const throttling = () => {
+  //   let throttleCheck;
+  //   return {
+  //     throttle(callback, milliseconds) {
+  //       if (!throttleCheck) {
+  //         throttleCheck = setTimeout(() => {
+  //           callback(...arguments);
+  //           throttleCheck = false;
+  //         }, milliseconds);
+  //       }
+  //     },
+  //   };
+  // };
+  // const throttler = throttling();
+
+  // throttling;
+  // window.addEventListener("scroll", () => {
+  //   throttler.throttle(() => {
+  //     scrollLoop();
+  //     checkNav();
+  //   }, 16);
+  // });
 
   window.addEventListener("load", () => {
     //로드가 끝나면 before load 클래스를 없앰.
     document.body.classList.remove("before-load");
     setLayout();
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
-
-    window.addEventListener("scroll", () => {
-      scrollLoop();
-      checkNav();
-    });
-
-    // throttling
-    // window.addEventListener("scroll", () => {
-    //   throttle(() => {
-    //     scrollLoop();
-    //     checkNav();
-    //   }, 16);
-    // });
-
-    // 리사이즈할 떄 setLayout 다시해줘야함.
-    // window.addEventListener("resize", setLayout);
-
-    //디바운스
-    window.addEventListener("resize", debounce(setLayout, 250));
-
-    //모바일에서 가로모드로 전환
-    window.addEventListener("orientationchange", () => {
-      setTimeout(setLayout, 500);
-    });
-    //트랜지션효과 때문에 div(.loading)을 바로 없애지 않고 transitionend 이후에 제거.
-    document
-      .querySelector(".loading")
-      .addEventListener("transitionend", (e) => {
-        if (document.querySelector(".loading")) {
-          document.body.removeChild(e.currentTarget);
-        }
-      });
   });
+
+  // throttling 하지 않은 코드
+  window.addEventListener("scroll", () => {
+    scrollLoop();
+    checkNav();
+  });
+
+  // 리사이즈할 떄 setLayout 다시해줘야함.
+  window.addEventListener("resize", setLayout);
+
+  //모바일에서 가로모드로 전환
+  window.addEventListener("orientationchange", () => {
+    setTimeout(setLayout, 500);
+  });
+  //트랜지션효과 때문에 div(.loading)을 바로 없애지 않고 transitionend 이후에 제거.
+  document.querySelector(".loading").addEventListener("transitionend", (e) => {
+    if (document.querySelector(".loading")) {
+      document.body.removeChild(e.currentTarget);
+    }
+  });
+
   setCanvasImages();
 })();

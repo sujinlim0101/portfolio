@@ -4,7 +4,7 @@
   "description": "url은 https://master.d2wixcbowv1i5n.amplifyapp.com/index.html 입니다.",
   "main": "index.js",
   "scripts": {
-    "build": "babel ./public/src -d ./public/lib -w"
+    "build": "babel ./public/src -d ./public/lib -w --no-comments"
   },
   "repository": {
     "type": "git",
