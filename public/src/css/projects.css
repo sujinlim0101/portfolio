@@ -8,15 +8,21 @@ body {
   overflow-x: hidden;
 }
 .container {
-  background-color: #f2f2f2;
   padding-bottom: 50vh;
 }
 .project-container {
   text-align: center;
-
   overflow-x: hidden;
   padding-top: 20vh;
 }
+.github,
+.projects-message div,
+p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 500px));
@@ -24,7 +30,6 @@ body {
   justify-content: center;
 }
 .project {
-  text-align: center;
   position: relative;
   padding: 1.5rem;
 }
@@ -36,12 +41,6 @@ body {
 .project img {
   border: 1px solid #d2d2d2;
   border-radius: 20px;
-}
-.projects-message div,
-p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .projects-message div {
   font-size: 2rem;
@@ -60,15 +59,16 @@ p {
   border-bottom: 1px #292929 solid;
   margin-left: 15rem;
   margin-right: 15rem;
+  text-align: center;
 }
 .project p {
+  background-color: #f5f3f3;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  line-height: 1.4rem;
   margin-top: 1rem;
   font-size: 1.2rem;
   font-weight: 600;
-}
-.project.b,
-.c p {
-  text-decoration: underline;
 }
 
 .project .web-link {
@@ -80,10 +80,11 @@ p {
   color: blue;
 }
 .experiment-descritption {
-  display: block;
+  font-family: "Do Hyeon", sans-serif;
   text-align: center;
+  display: block;
   border-top: 1px solid #d2d2d2;
-  font-size: 2rem;
+  font-size: 2.2rem;
   padding-top: 2em;
   margin: 2em;
 }
