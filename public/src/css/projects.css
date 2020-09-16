@@ -65,10 +65,10 @@ p {
   background-color: #f5f3f3;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  line-height: 1.4rem;
+  line-height: 1.5rem;
   margin-top: 1rem;
-  font-size: 1.2rem;
   font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .project .web-link {
@@ -88,6 +88,7 @@ p {
   padding-top: 2em;
   margin: 2em;
 }
+
 /* IE10+ */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .grid-container {
