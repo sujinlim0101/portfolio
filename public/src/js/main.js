@@ -9,23 +9,23 @@
   //const io = new IntersectionObserver((entries, observer) => {});
 
   //세영역을 묶어 background 색을 바꾸는 영역, scrollHeight이 필요없어 따로 놓음
-  const transitionContainer = document.querySelector("#transition-container");
+  const transitionContainer = document.querySelector('#transition-container');
 
   const sceneInfo = [
     {
       //0섹션 정보
-      type: "sticky",
+      type: 'sticky',
       heightNum: 5,
       scrollHeight: 0,
       //0섹션 objs
       objs: {
-        container: document.querySelector("#scroll-section-0"),
-        messageA: document.querySelector(".main-message.a"),
-        messageB: document.querySelector(".main-message.b"),
-        messageC: document.querySelector(".main-message.c"),
-        messageD: document.querySelector(".main-message.d"),
-        canvas: document.querySelector("#video-canvas-0"),
-        context: document.querySelector("#video-canvas-0").getContext("2d"),
+        container: document.querySelector('#scroll-section-0'),
+        messageA: document.querySelector('.main-message.a'),
+        messageB: document.querySelector('.main-message.b'),
+        messageC: document.querySelector('.main-message.c'),
+        messageD: document.querySelector('.main-message.d'),
+        canvas: document.querySelector('#video-canvas-0'),
+        context: document.querySelector('#video-canvas-0').getContext('2d'),
         //비디오(이미지)를 setCanvasImages함수에서 넣어줌
         videoImages: [],
       },
@@ -58,51 +58,51 @@
       //1  sticky가 아니지만 heigth를 비율로 조정하기 위해 씀
       //캔버스가 하얀색이고 양옆으로 여백이 남는경우) 스크롤이 빠르게 될 때 transition효과가 나타날때 양옆에 검은 테두리가 생김.
       //그것을 방지하기 위해 창 사이즈만큼 section의 높이로 주고, 완화하기 위한 조치로서 height num을 1로 줌.
-      type: "sticky",
+      type: 'sticky',
       heightNum: 1,
       scrollHeight: 0,
       objs: {
-        container: document.querySelector("#scroll-section-1"),
+        container: document.querySelector('#scroll-section-1'),
       },
       values: {},
     },
     {
       //2 normal은 자신이 가진 hegiht만큼 가지기 때문에 조정하지 않음.
-      type: "normal",
+      type: 'normal',
       objs: {
-        container: document.querySelector("#scroll-section-2"),
+        container: document.querySelector('#scroll-section-2'),
       },
     },
     {
       //3
-      type: "normal",
+      type: 'normal',
       objs: {
-        container: document.querySelector("#scroll-section-3"),
+        container: document.querySelector('#scroll-section-3'),
       },
     },
 
     {
       //4
-      type: "normal",
+      type: 'normal',
       objs: {
-        container: document.querySelector("#scroll-section-4"),
+        container: document.querySelector('#scroll-section-4'),
       },
     },
 
     {
       //5
-      type: "sticky",
+      type: 'sticky',
       heightNum: 7,
       scrollHeight: 0,
       objs: {
-        container: document.querySelector("#scroll-section-5"),
-        messageA: document.querySelector("#scroll-section-5 .a"),
-        messageB: document.querySelector("#scroll-section-5 .b"),
-        messageC: document.querySelector("#scroll-section-5 .c"),
-        pinB: document.querySelector("#scroll-section-5 .b .pin"),
-        pinC: document.querySelector("#scroll-section-5 .c .pin"),
-        canvas: document.querySelector("#video-canvas-1"),
-        context: document.querySelector("#video-canvas-1").getContext("2d"),
+        container: document.querySelector('#scroll-section-5'),
+        messageA: document.querySelector('#scroll-section-5 .a'),
+        messageB: document.querySelector('#scroll-section-5 .b'),
+        messageC: document.querySelector('#scroll-section-5 .c'),
+        pinB: document.querySelector('#scroll-section-5 .b .pin'),
+        pinC: document.querySelector('#scroll-section-5 .c .pin'),
+        canvas: document.querySelector('#video-canvas-1'),
+        context: document.querySelector('#video-canvas-1').getContext('2d'),
         videoImages: [],
       },
       values: {
@@ -128,10 +128,10 @@
     },
     {
       //6
-      type: "normal",
+      type: 'normal',
       scrollHeight: 0,
       objs: {
-        container: document.querySelector("#scroll-section-6"),
+        container: document.querySelector('#scroll-section-6'),
       },
     },
   ];
@@ -139,9 +139,9 @@
   //nav의 sticky와 투명도 조절.
   function checkNav() {
     if (yOffset > 44) {
-      document.body.classList.add("nav-sticky");
+      document.body.classList.add('nav-sticky');
     } else {
-      document.body.classList.remove("nav-sticky");
+      document.body.classList.remove('nav-sticky');
     }
   }
 
@@ -174,7 +174,7 @@
   function setLayout() {
     //section의 height를 셋팅.
     for (let i = 0; i < sceneInfo.length; i++) {
-      if (sceneInfo[i].type === "normal") {
+      if (sceneInfo[i].type === 'normal') {
         sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight;
       } else {
         sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
@@ -194,19 +194,19 @@
       }
     }
     //세로 기준에 맞추어 캔버스 크기를 조절함
-    document.body.setAttribute("id", `show-scene-${currentScene}`);
+    document.body.setAttribute('id', `show-scene-${currentScene}`);
     const heightRatio = document.documentElement.clientHeight / 1080;
     //캔버스가 가운데로 조절되기 위해 맞춰주는 값
     sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
     sceneInfo[5].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
   }
   function blackIn() {
-    transitionContainer.setAttribute("class", "black-ani");
+    transitionContainer.setAttribute('class', 'black-ani');
     checkBlack = true;
   }
   function blackOut() {
     //너무 빨리 스크롤 경우에 black-ani가 빠지지 않을 수 있기 떄문에 모든 section에 추가해줌.
-    transitionContainer.removeAttribute("class", "black-ani");
+    transitionContainer.removeAttribute('class', 'black-ani');
     checkBlack = false;
   }
 
@@ -333,7 +333,7 @@
       case 4:
         if (scrollRatio > 0.8) {
           //부드럽게 캔버스로 넘어가기 위해서 하얀색 배경으로 바꿈.
-          objs.container.style.background = "white";
+          objs.container.style.background = 'white';
         }
         break;
       case 5:
@@ -493,7 +493,7 @@
       enterNewScene = true;
       currentScene--;
     }
-    document.body.setAttribute("id", `show-scene-${currentScene}`);
+    document.body.setAttribute('id', `show-scene-${currentScene}`);
     // 씬에 처음으로 들어갔을 때 이상값이 생기는 현상 때문에 이 때 한번 패스하고, return.
     if (enterNewScene) return;
     playAnimation();
@@ -523,29 +523,29 @@
   //   }, 16);
   // });
 
-  window.addEventListener("load", () => {
+  window.addEventListener('load', () => {
     //로드가 끝나면 before load 클래스를 없앰.
-    document.body.classList.remove("before-load");
+    document.body.classList.remove('before-load');
     setLayout();
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
   });
 
   // todo: throttling
-  window.addEventListener("scroll", () => {
+  window.addEventListener('scroll', () => {
     scrollLoop();
     checkNav();
   });
 
   // 리사이즈할 떄 setLayout 다시함.
-  window.addEventListener("resize", setLayout);
+  window.addEventListener('resize', setLayout);
 
   //모바일에서 가로모드로 전환
-  window.addEventListener("orientationchange", () => {
+  window.addEventListener('orientationchange', () => {
     setTimeout(setLayout, 500);
   });
   //트랜지션효과 때문에 div(.loading)을 바로 없애지 않고 transitionend 이후에 제거.
-  document.querySelector(".loading").addEventListener("transitionend", (e) => {
-    if (document.querySelector(".loading")) {
+  document.querySelector('.loading').addEventListener('transitionend', e => {
+    if (document.querySelector('.loading')) {
       document.body.removeChild(e.currentTarget);
     }
   });

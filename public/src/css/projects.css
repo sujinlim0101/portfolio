@@ -63,8 +63,7 @@ p {
 }
 .project p {
   background-color: #f5f3f3;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
   line-height: 1.5rem;
   margin-top: 1rem;
   font-weight: 600;
