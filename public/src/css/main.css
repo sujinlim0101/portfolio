@@ -50,7 +50,7 @@ body.before-load {
 
 #scroll-section-0 .project_title {
   position: relative;
-  top: -10vh;
+  top: 30vh;
   z-index: 5;
   font-size: 4rem;
   text-align: center;
