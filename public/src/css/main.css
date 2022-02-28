@@ -90,6 +90,39 @@ body.before-load {
 }
 #scroll-section-2 {
   padding-top: 30vh;
+  text-align: center;
+}
+.transition-message .introduce-desc {
+  font-size: 21px;
+}
+.stack-chip-wrapper {
+  display: inline-flex;
+  margin: 20px auto;
+  gap: 12px;
+}
+.stack-chip {
+  padding: 6px 16px;
+  border: 1px solid #9b439b;
+  border-radius: 20px;
+  background: #c35eeb36;
+  font-weight: 700;
+}
+.stack-chip-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+.stack-chip.lang-test {
+  border: 1px solid #abb15a;
+  background: #aebd8536;
+}
+.stack-chip.lang-js {
+  border: 1px solid #94f593;
+  background: #23644136;
+}
+.stack-chip.lang-api {
+  border: 1px solid #93e2f5;
+  background: #4a678936;
 }
 .transition {
   display: -ms-flexbox;
