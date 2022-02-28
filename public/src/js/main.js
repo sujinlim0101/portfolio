@@ -94,7 +94,7 @@
       type: 'normal',
       scrollHeight: 0,
       objs: {
-        container: document.querySelector('#scroll-section-6'),
+        container: document.querySelector('#scroll-section-5'),
       },
     },
   ];
@@ -150,15 +150,6 @@
     //캔버스가 가운데로 조절되기 위해 맞춰주는 값
     sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
   }
-  function blackIn() {
-    transitionContainer.setAttribute('class', 'black-ani');
-    checkBlack = true;
-  }
-  function blackOut() {
-    //너무 빨리 스크롤 경우에 black-ani가 빠지지 않을 수 있기 떄문에 모든 section에 추가해줌.
-    transitionContainer.removeAttribute('class', 'black-ani');
-    checkBlack = false;
-  }
 
   function playAnimation() {
     const objs = sceneInfo[currentScene].objs;
@@ -171,7 +162,6 @@
 
     switch (currentScene) {
       case 0:
-        blackOut();
         let sequence = Math.round(
           calcValues(values.imgaeSequence, currentYOffset)
         );
@@ -265,21 +255,6 @@
           )}%, 0)`;
         }
         break;
-      case 1:
-        if (checkBlack) {
-          blackOut();
-        }
-        break;
-      case 2:
-        if (!checkBlack) {
-          blackIn();
-        }
-        break;
-      case 3:
-        if (checkBlack) {
-          blackOut();
-        }
-        break;
       case 4:
         if (scrollRatio > 0.8) {
           //부드럽게 캔버스로 넘어가기 위해서 하얀색 배경으로 바꿈.
@@ -351,30 +326,6 @@
     playAnimation();
   }
 
-  // throttling
-  // const throttling = () => {
-  //   let throttleCheck;
-  //   return {
-  //     throttle(callback, milliseconds) {
-  //       if (!throttleCheck) {
-  //         throttleCheck = setTimeout(() => {
-  //           callback(...arguments);
-  //           throttleCheck = false;
-  //         }, milliseconds);
-  //       }
-  //     },
-  //   };
-  // };
-  // const throttler = throttling();
-
-  // throttling;
-  // window.addEventListener("scroll", () => {
-  //   throttler.throttle(() => {
-  //     scrollLoop();
-  //     checkNav();
-  //   }, 16);
-  // });
-
   window.addEventListener('load', () => {
     //로드가 끝나면 before load 클래스를 없앰.
     document.body.classList.remove('before-load');
@@ -382,7 +333,6 @@
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
   });
 
-  // todo: throttling
   window.addEventListener('scroll', () => {
     scrollLoop();
     checkNav();

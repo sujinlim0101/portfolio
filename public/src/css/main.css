@@ -15,11 +15,8 @@ body.before-load {
   overflow: hidden;
 }
 
-#transition-container {
-  transition: background-color 1s ease-in-out;
-}
 #transition-container.black-ani {
-  background-color: rgb(41 40 40);
+  transition: 0.5s all ease-in-out;
   color: white;
 }
 
@@ -91,11 +88,18 @@ body.before-load {
   padding-top: 35vh;
 }
 #scroll-section-2 {
-  padding-top: 30vh;
+  padding: 30vh 10vw;
   text-align: center;
+  background-color: #ffebd2;
+}
+#scroll-section-2 .transition {
+  padding: 2rem;
 }
 .transition-message .introduce-desc {
   font-size: 21px;
+}
+#show-scene-3 .stack-chip {
+  color: black;
 }
 .stack-chip-wrapper {
   display: inline-flex;
@@ -108,6 +112,9 @@ body.before-load {
   border-radius: 20px;
   background: #c35eeb36;
   font-weight: 700;
+  padding: 6px 16px;
+  color: white;
+  transition: 0.2s ease-in-out color;
 }
 .stack-chip-wrapper {
   display: flex;
@@ -196,39 +203,12 @@ body.before-load {
   border: 0px;
   width: 70%;
 }
-.pin {
-  width: 1px;
-  height: 100px;
-  background: rgb(29, 29, 31);
-}
-.desc-message {
-  line-height: 1.5;
-  font-size: 1rem;
-  width: 225px;
-  font-weight: bold;
-  opacity: 0;
-}
-#scroll-section-5 .main-message {
-  padding: 0;
-  text-align: center;
-  top: 25vh;
-  left: 0;
-  font-size: 2.2rem;
-}
 
-#scroll-section-5 .b {
-  top: 15%;
-  left: 35%;
-}
-#scroll-section-5 .c {
-  top: 18%;
-  left: 17%;
-}
-#scroll-section-6 {
+#scroll-section-5 {
   padding: 13vh 0;
   background-color: #fbf8f5;
 }
-#scroll-section-6 h3 {
+#scroll-section-5 h3 {
   padding: 1rem;
   display: -ms-flexbox;
   display: flex;
@@ -276,9 +256,12 @@ body.before-load {
   justify-content: center;
 }
 .project-container {
+  display: flex;
   padding: 2.5rem 1rem;
   width: 350px;
   height: 400px;
+  flex-direction: column;
+  justify-content: center;
 }
 .project-img-container {
   display: -ms-flexbox;
@@ -366,8 +349,7 @@ body.before-load {
   #scroll-section-5 .c {
     left: 30%;
   }
-  #scroll-section-5 .main-message,
-  #scroll-section-6 h3 {
+  #scroll-section-5 h3 {
     font-size: 3vw;
   }
 }
