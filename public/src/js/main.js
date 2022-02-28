@@ -121,18 +121,6 @@
       }
       sceneInfo[0].objs.videoImages.push(imgElem);
     }
-    let imgElem1;
-    for (let i = 1; i < sceneInfo[5].values.videoImageCount + 1; i++) {
-      imgElem1 = new Image();
-      if (i < 10) {
-        imgElem1.src = `public/src/images/003/000${i}.jpg`;
-      } else if (i < 100) {
-        imgElem1.src = `public/src/images/003/00${i}.jpg`;
-      } else {
-        imgElem1.src = `public/src/images/003/0${i}.jpg`;
-      }
-      sceneInfo[5].objs.videoImages.push(imgElem1);
-    }
   }
   function setLayout() {
     //section의 height를 셋팅.
@@ -161,7 +149,6 @@
     const heightRatio = document.documentElement.clientHeight / 1080;
     //캔버스가 가운데로 조절되기 위해 맞춰주는 값
     sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
-    sceneInfo[5].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
   }
   function blackIn() {
     transitionContainer.setAttribute('class', 'black-ani');

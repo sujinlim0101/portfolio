@@ -15,10 +15,12 @@ body.before-load {
   overflow: hidden;
 }
 
+#transition-container {
+  transition: background-color 1s ease-in-out;
+}
 #transition-container.black-ani {
   background-color: rgb(41 40 40);
   color: white;
-  transition: background-color 2s ease-in-out !important;
 }
 
 .container {
@@ -252,7 +254,8 @@ body.before-load {
   -ms-flex-pack: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  text-align: center;
   background-color: #f2f2f2;
 }
 .introduce-message a {
@@ -337,7 +340,7 @@ body.before-load {
   stroke-dasharray: 157;
   stroke-dashoffset: 0;
   fill: transparent;
-  animation: loading-circle-ani 1s infinite;
+  animation: loading-circle-ani 0.5s infinite;
   /* transition: 1s; */
 }
 
