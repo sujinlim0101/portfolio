@@ -107,6 +107,7 @@ main {
 .stack-chip-wrapper {
   display: inline-flex;
   margin: 20px auto;
+  flex-wrap: wrap;
   gap: 12px;
 }
 .stack-chip {
