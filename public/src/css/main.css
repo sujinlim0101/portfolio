@@ -24,6 +24,9 @@ body.before-load {
   /* iPhone 가로 스크롤 방지 */
   overflow-x: hidden;
 }
+main {
+  margin-bottom: 0;
+}
 .sticky-elem {
   display: none;
   position: fixed;

@@ -9,6 +9,16 @@ body {
 }
 .container {
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%!important;
+}
+main {
+  flex-shrink: 0;
+  margin-bottom: 100px;
+}
+footer {
+  margin-top: auto;
 }
 .nav-links {
   display: -ms-flexbox;
